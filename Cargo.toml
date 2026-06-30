@@ -18,10 +18,10 @@ features = ["spin_no_std"]
 
 
 [profile.dev]
-#panic = "abort"
+panic = "abort"
 
 [profile.release]
-#panic = "abort"
+panic = "abort"
 
 [[bin]]
 name = "Rusty_OS"

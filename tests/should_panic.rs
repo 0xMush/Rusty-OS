@@ -1,8 +1,11 @@
 #![no_std]
 #![no_main]
+#![feature(custom_test_frameworks)]
+#![test_runner(test_runner)]
+#![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
-use blog_os::{QemuExitCode, exit_qemu, serial_println};
+use Rusty_OS::{QemuExitCode, exit_qemu, serial_println};
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
@@ -10,10 +13,6 @@ fn panic(_info: &PanicInfo) -> ! {
     exit_qemu(QemuExitCode::Success);
     loop {}
 }
-
-#![feature(custom_test_frameworks)]
-#![test_runner(test_runner)]
-#![reexport_test_harness_main = "test_main"]
 
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
